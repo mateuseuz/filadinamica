@@ -42,7 +42,7 @@ public class Fila {
         if (refNoEntrada != null) {
             while (true) {
                 stringRetorno += "[No {" + noAuxiliar.getElemento() + "}] --> ";
-                if (noAuxiliar.getRefNo() != null) {
+                if(noAuxiliar.getRefNo() != null) {
                     noAuxiliar = noAuxiliar.getRefNo();
                 } else {
                     stringRetorno += "null";
@@ -53,5 +53,92 @@ public class Fila {
             stringRetorno = "null";
         }
         return stringRetorno;
+    }
+
+    public void removerTodasOcorrencias(Integer elemento) {
+        if(estaVazia()) return;
+
+        No noAtual = refNoEntrada;
+        No noAnterior = null;
+
+        while(noAtual != null) {
+            if(noAtual.getElemento().equals(elemento)) {
+                if(noAnterior == null) {
+                    refNoEntrada = noAtual.getRefNo();
+                } else {
+                    noAnterior.setRefNo(noAtual.getRefNo());
+                }
+            } else {
+                noAnterior = noAtual;
+            }
+            noAtual = noAtual.getRefNo();
+        }
+    }
+
+    public boolean buscar(Integer elemento) {
+        No noAtual = refNoEntrada;
+        while(noAtual != null) {
+            if(noAtual.getElemento().equals(elemento)) {
+                return true;
+            }
+            noAtual = noAtual.getRefNo();
+        }
+        return false;
+    }
+
+    public Integer maior() {
+        if(estaVazia()) return null;
+
+        Integer maior = refNoEntrada.getElemento();
+        No noAtual = refNoEntrada.getRefNo();
+
+        while(noAtual != null) {
+            if(noAtual.getElemento() > maior) {
+                maior = noAtual.getElemento();
+            }
+            noAtual = noAtual.getRefNo();
+        }
+        return maior;
+    }
+
+    public Integer menor() {
+        if(estaVazia()) return null;
+
+        Integer menor = refNoEntrada.getElemento();
+        No noAtual = refNoEntrada.getRefNo();
+
+        while(noAtual != null) {
+            if(noAtual.getElemento() < menor) {
+                menor = noAtual.getElemento();
+            }
+            noAtual = noAtual.getRefNo();
+        }
+        return menor;
+    }
+
+    public Double media() {
+        if(estaVazia()) return null;
+
+        int soma = 0;
+        int quantidade = 0;
+        No noAtual = refNoEntrada;
+
+        while(noAtual != null) {
+            soma += noAtual.getElemento();
+            quantidade++;
+            noAtual = noAtual.getRefNo();
+        }
+        return(double) soma / quantidade;
+    }
+
+    public int quantidade() {
+        int quantidade = 0;
+        No noAtual = refNoEntrada;
+
+        while (noAtual != null) {
+            quantidade++;
+            noAtual = noAtual.getRefNo();
+        }
+        return quantidade;
     }
 }
