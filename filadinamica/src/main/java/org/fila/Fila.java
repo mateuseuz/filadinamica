@@ -12,7 +12,7 @@ public class Fila {
         refNoEntrada = novoNo;
     }
 
-    public No desenfileirar() {
+    public void desenfileirar() {
         if(!this.estaVazia()) {
             No primeiroNo = refNoEntrada;
             No noAuxiliar = refNoEntrada;
@@ -25,9 +25,9 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo;
+            return;
         }
-        return null;
+        return;
     }
 
     public boolean estaVazia() {
