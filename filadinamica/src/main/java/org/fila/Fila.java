@@ -12,14 +12,14 @@ public class Fila {
         refNoEntrada = novoNo;
     }
 
-    public No desenfileirar() {
-        if(estaVazia()) return false;
+    public boolean desenfileirar(Integer elemento) {
+        if (estaVazia()) return false;
 
         No noAtual = refNoEntrada;
         No noAnterior = null;
 
-        while(noAtual != null) {
-            if(noAtual.getElemento().equals(elemento)) {
+        while (noAtual != null) {
+            if (noAtual.getElemento().equals(elemento)) {
                 if (noAnterior == null) {
                     refNoEntrada = noAtual.getRefNo();
                 } else {
