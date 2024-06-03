@@ -12,22 +12,25 @@ public class Fila {
         refNoEntrada = novoNo;
     }
 
-    public void desenfileirar() {
-        if(!this.estaVazia()) {
-            No primeiroNo = refNoEntrada;
-            No noAuxiliar = refNoEntrada;
-            while(true) {
-                if(primeiroNo.getRefNo() != null) {
-                    noAuxiliar = primeiroNo;
-                    primeiroNo = primeiroNo.getRefNo();
+    public No desenfileirar() {
+        if(estaVazia()) return false;
+
+        No noAtual = refNoEntrada;
+        No noAnterior = null;
+
+        while(noAtual != null) {
+            if(noAtual.getElemento().equals(elemento)) {
+                if (noAnterior == null) {
+                    refNoEntrada = noAtual.getRefNo();
                 } else {
-                    noAuxiliar.setRefNo(null);
-                    break;
+                    noAnterior.setRefNo(noAtual.getRefNo());
                 }
+                return true;
             }
-            return;
+            noAnterior = noAtual;
+            noAtual = noAtual.getRefNo();
         }
-        return;
+        return false;
     }
 
     public boolean estaVazia() {
