@@ -43,8 +43,7 @@ public class Executora {
              case 3:
                 System.out.print("Insira o elemento a ser removido: ");
                 elemento = scanner.nextInt();
-                filaDinamica.removerTodasOcorrencias(elemento);
-                System.out.println("Todas as ocorrências do elemento " + elemento + " foram removidas.");
+                System.out.println(filaDinamica.removerTodasOcorrencias(elemento) ? "Todas as ocorrências do elemento " + elemento + " foram removidas." : "Elemento não encontrado na fila.");
                 break;
 
              case 4:

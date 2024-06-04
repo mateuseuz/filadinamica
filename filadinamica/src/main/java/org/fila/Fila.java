@@ -58,8 +58,8 @@ public class Fila {
         return stringRetorno;
     }
 
-    public void removerTodasOcorrencias(Integer elemento) {
-        if(estaVazia()) return;
+    public boolean removerTodasOcorrencias(Integer elemento) {
+        if(estaVazia()) return false;
 
         No noAtual = refNoEntrada;
         No noAnterior = null;
@@ -76,6 +76,7 @@ public class Fila {
             }
             noAtual = noAtual.getRefNo();
         }
+        return true;
     }
 
     public boolean buscar(Integer elemento) {
